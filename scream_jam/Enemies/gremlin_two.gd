@@ -22,15 +22,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if last_position == position:
-		print("Not moving", moving_direction)
+		#print("Not moving", moving_direction)
 		reverse_movement(moving_direction)
 	else:
-		print("Moving from", last_position, "to", position)
+		#print("Moving from ", last_position, " to ", position)
 		last_position = position  # Correct assignment
 
 func _physics_process(delta: float) -> void:
 	velocity = move[moving_direction] * speed  # Ensure velocity is updated
 	move_and_slide()
+
+func tilemap() -> void:
+	get_parent().get_tree()
 
 func reverse_movement(value: String) -> void:
 	match value:
@@ -39,10 +42,7 @@ func reverse_movement(value: String) -> void:
 		"right":
 			move_left()
 		"up":
-			if is_on_ceiling():
-				move_right()
-			else:
-				move_down()
+			move_down()
 		"down":
 			move_up()
 
@@ -58,3 +58,15 @@ func move_up() -> void:
 func move_down() -> void:
 	velocity = move["down"] * speed
 	moving_direction = "down"
+
+func _on_right_area_body_exited(body: Node2D) -> void:
+	var decision = decide()
+	print("Decision is: ", decision)
+	if decision == true:
+		print("Moving Right")
+		move_right()
+	else:
+		print("Keep on Keeping On")
+
+func decide() -> bool:
+	return randi_range(1, 10) % 2 == 0

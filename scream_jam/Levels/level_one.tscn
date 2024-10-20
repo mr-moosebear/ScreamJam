@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk8e5ek1as7od"]
+[gd_scene load_steps=7 format=3 uid="uid://bk8e5ek1as7od"]
 
+[ext_resource type="Script" path="res://Levels/level_one.gd" id="1_w7e1h"]
 [ext_resource type="PackedScene" uid="uid://0bt4bp4rwcvs" path="res://Characters/player_character.tscn" id="2_ub8q6"]
 [ext_resource type="Texture2D" uid="uid://bl6djnot30wwc" path="res://Art/Trees/Zombie-Tileset---_0134_Capa-135.png" id="3_eckmc"]
 [ext_resource type="PackedScene" uid="uid://b02v885w0la0a" path="res://Enemies/gremlin_two.tscn" id="4_av2bh"]
@@ -15,6 +16,7 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_gyqwk")
 
 [node name="LevelOne" type="Node2D"]
+script = ExtResource("1_w7e1h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1151.0
