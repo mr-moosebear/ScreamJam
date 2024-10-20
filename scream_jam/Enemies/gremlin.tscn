@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3jyqns0x8i06"]
+
+[ext_resource type="Script" path="res://Enemies/gremlin.gd" id="1_g4fk6"]
+[ext_resource type="Texture2D" uid="uid://ds4q4motskynt" path="res://Art/RandomArt/Gremlon.svg" id="1_unso8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nc8om"]
+radius = 9.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmpe6"]
+radius = 80.0
+height = 160.0
+
+[node name="Gremlin" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_g4fk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0712812, 0.0683354)
+texture = ExtResource("1_unso8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_nc8om")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_pmpe6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
