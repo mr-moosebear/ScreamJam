@@ -14,7 +14,7 @@ var last_position = Vector2.ZERO
 func _physics_process(delta):
 	if area_detected == true:
 		raycast_result = raycast_dictionary()
-
+		print(raycast_result)
 		if velocity == Vector2(0, 0):
 			print("Have no velocity ", velocity, " Switching Directions")
 			is_stopped = true
