@@ -4,21 +4,21 @@ extends CharacterBody2D
 
 func _process(delta: float) -> void:
 	if velocity == Vector2(0, 0):
-		reverse_movement($CompEnemyMove.moving_direction)
+		#change_movement($CompEnemyMove.moving_direction)
 		var possible_moves = possible_direction()
-		print(possible_moves)
-		print_states()
+		change_movement(possible_moves.pick_random())
+		#print_states()
 
-func reverse_movement(value: String) -> void:
+func change_movement(value: String) -> void:
 	match value:
 		"left":
-			$CompEnemyMove.move_right()
-		"right":
 			$CompEnemyMove.move_left()
+		"right":
+			$CompEnemyMove.move_right()
 		"up":
-			$CompEnemyMove.move_down()
-		"down":
 			$CompEnemyMove.move_up()
+		"down":
+			$CompEnemyMove.move_down()
 
 func decide() -> bool:
 	return randi_range(1, 10) % 2 == 0
