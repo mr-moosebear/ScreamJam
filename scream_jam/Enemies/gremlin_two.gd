@@ -8,7 +8,6 @@ var last_direction : String
 
 var is_moving = false
 
-var possible_directions : Array
 
 const move : Dictionary = {
 	"left": Vector2(-1, 0),
@@ -27,7 +26,7 @@ func _process(delta: float) -> void:
 		reverse_movement(moving_direction)
 	else:
 		#print("Moving from ", last_position, " to ", position)
-		last_position = position  # Correct assignment
+		last_position = position
 
 func _physics_process(delta: float) -> void:
 	velocity = move[moving_direction] * speed  # Ensure velocity is updated
