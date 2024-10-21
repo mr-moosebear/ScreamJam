@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b02v885w0la0a"]
+[gd_scene load_steps=8 format=3 uid="uid://b02v885w0la0a"]
 
 [ext_resource type="Script" path="res://Enemies/gremlin_two.gd" id="1_g0o58"]
 [ext_resource type="Texture2D" uid="uid://ds4q4motskynt" path="res://Art/RandomArt/Gremlon.svg" id="1_gxys6"]
@@ -7,10 +7,16 @@
 size = Vector2(17, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi2um"]
-size = Vector2(11, 31)
+size = Vector2(15, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ad22"]
 size = Vector2(12, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3agkp"]
+size = Vector2(19, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr04q"]
+size = Vector2(19, 6)
 
 [node name="GremlinTwo" type="CharacterBody2D"]
 script = ExtResource("1_g0o58")
@@ -29,11 +35,11 @@ metadata/_edit_group_ = true
 [node name="ColorRect" type="ColorRect" parent="RightArea"]
 offset_left = 9.0
 offset_top = -12.0
-offset_right = 20.0
+offset_right = 24.0
 offset_bottom = 19.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(14.5, 3.5)
+position = Vector2(16.5, 3.5)
 shape = SubResource("RectangleShape2D_mi2um")
 
 [node name="LeftArea" type="Area2D" parent="."]
@@ -49,4 +55,29 @@ offset_bottom = 19.0
 position = Vector2(6, 3.5)
 shape = SubResource("RectangleShape2D_8ad22")
 
+[node name="UpperArea" type="Area2D" parent="."]
+position = Vector2(-10, -19)
+
+[node name="ColorRect" type="ColorRect" parent="UpperArea"]
+offset_right = 19.0
+offset_bottom = 6.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperArea"]
+position = Vector2(9.5, 3)
+shape = SubResource("RectangleShape2D_3agkp")
+
+[node name="LowerArea" type="Area2D" parent="."]
+position = Vector2(-10, 20)
+
+[node name="ColorRect" type="ColorRect" parent="LowerArea"]
+offset_right = 19.0
+offset_bottom = 6.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerArea"]
+position = Vector2(9.5, 3)
+shape = SubResource("RectangleShape2D_vr04q")
+
 [connection signal="body_exited" from="RightArea" to="." method="_on_right_area_body_exited"]
+[connection signal="body_exited" from="LeftArea" to="." method="_on_left_area_body_exited"]
+[connection signal="body_exited" from="UpperArea" to="." method="_on_upper_area_body_exited"]
+[connection signal="body_exited" from="LowerArea" to="." method="_on_lower_area_body_exited"]

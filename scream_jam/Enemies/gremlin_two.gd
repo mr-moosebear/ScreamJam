@@ -8,6 +8,7 @@ var last_direction : String
 
 var is_moving = false
 
+var possible_directions : Array
 
 const move : Dictionary = {
 	"left": Vector2(-1, 0),
@@ -32,8 +33,6 @@ func _physics_process(delta: float) -> void:
 	velocity = move[moving_direction] * speed  # Ensure velocity is updated
 	move_and_slide()
 
-func tilemap() -> void:
-	get_parent().get_tree()
 
 func reverse_movement(value: String) -> void:
 	match value:
@@ -59,6 +58,10 @@ func move_down() -> void:
 	velocity = move["down"] * speed
 	moving_direction = "down"
 
+func decide() -> bool:
+	return randi_range(1, 10) % 2 == 0
+
+
 func _on_right_area_body_exited(body: Node2D) -> void:
 	var decision = decide()
 	print("Decision is: ", decision)
@@ -68,5 +71,32 @@ func _on_right_area_body_exited(body: Node2D) -> void:
 	else:
 		print("Keep on Keeping On")
 
-func decide() -> bool:
-	return randi_range(1, 10) % 2 == 0
+
+func _on_left_area_body_exited(body: Node2D) -> void:
+	var decision = decide()
+	print("Decision is: ", decision)
+	if decision == true:
+		print("Moving Left")
+		move_left()
+	else:
+		print("Keep on Keeping On")
+
+
+func _on_upper_area_body_exited(body: Node2D) -> void:
+	var decision = decide()
+	print("Decision is: ", decision)
+	if decision == true:
+		print("Moving Up")
+		move_up()
+	else:
+		print("Keep on Keeping On")
+
+
+func _on_lower_area_body_exited(body: Node2D) -> void:
+	var decision = decide()
+	print("Decision is: ", decision)
+	if decision == true:
+		print("Moving Down")
+		move_down()
+	else:
+		print("Keep on Keeping On")
