@@ -1,6 +1,26 @@
 extends CharacterBody2D
 # TODO: Make a decision when both left/right exit on choosing left or right
 
+func _physics_process(delta: float) -> void:
+	if velocity == Vector2(0, 0):
+		reverse_direction() # Probably will make a possible directions and pick random from that
+
+
+func reverse_direction() -> void:
+	match $CompEnemyMove.moving_direction:
+		"right":
+			print("Move left")
+			$CompEnemyMove.move_left()
+		"left":
+			print("Move right")
+			$CompEnemyMove.move_right()
+		"up":
+			print("Move down")
+			$CompEnemyMove.move_down()
+		"down":
+			print("Move up")
+			$CompEnemyMove.move_up()
+
 func decide_left_or_right() -> String:
 	var decision = randi_range(1, 10) % 2 == 0
 	var str : String
@@ -25,7 +45,8 @@ func _on_right_area_body_exited(body: Node2D) -> void:
 
 func _on_left_area_body_exited(body: Node2D) -> void:
 	if $CompEnemyMove.moving_direction != "right":
-		$CompEnemyMove.move_left()
+		#$CompEnemyMove.move_left()
+		print("Do we need a left ")
 
 func _on_upper_area_body_exited(body: Node2D) -> void:
 	if $CompEnemyMove.moving_direction != "down":
