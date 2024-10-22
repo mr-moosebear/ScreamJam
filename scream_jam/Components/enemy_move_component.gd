@@ -1,5 +1,4 @@
 
-# NOTE: This script is a work in progress
 class_name CompEnemyMove
 extends Node
 

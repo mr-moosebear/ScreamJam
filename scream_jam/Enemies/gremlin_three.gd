@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-
-
 func _process(delta: float) -> void:
+	if !$RightRaycast.is_colliding() && $CompEnemyMove.moving_direction == "up":
+		$CompEnemyMove.move_right()
 	if velocity == Vector2(0, 0):
 		#change_movement($CompEnemyMove.moving_direction)
 		var possible_moves = possible_direction()
 		change_movement(possible_moves.pick_random())
 		#print_states()
 
+	
 func change_movement(value: String) -> void:
 	match value:
 		"left":
@@ -20,8 +21,6 @@ func change_movement(value: String) -> void:
 		"down":
 			$CompEnemyMove.move_down()
 
-func decide() -> bool:
-	return randi_range(1, 10) % 2 == 0
 
 func possible_direction() -> Array:
 	var movements : Array = []

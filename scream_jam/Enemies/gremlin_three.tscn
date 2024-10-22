@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Components/enemy_move_component.gd" id="2_hdwe4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmlrk"]
-size = Vector2(30, 30)
+size = Vector2(26, 29)
 
 [node name="GremlinThree" type="CharacterBody2D"]
 script = ExtResource("1_endf1")
@@ -16,12 +16,13 @@ scale = Vector2(0.132231, 0.133264)
 texture = ExtResource("1_v6wca")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -15.0
+offset_left = -13.0
 offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
+offset_right = 13.0
+offset_bottom = 14.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lmlrk")
 
 [node name="CompEnemyMove" type="Node" parent="." node_paths=PackedStringArray("body")]
@@ -29,13 +30,17 @@ script = ExtResource("2_hdwe4")
 body = NodePath("..")
 
 [node name="RightRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(45, 0)
+position = Vector2(9, 14)
+target_position = Vector2(31, 0)
 
 [node name="LeftRaycast" type="RayCast2D" parent="."]
+position = Vector2(-15, -14)
 target_position = Vector2(-45, 0)
 
 [node name="UpRaycast" type="RayCast2D" parent="."]
+position = Vector2(-9, -20)
 target_position = Vector2(0, -31)
 
 [node name="DownRaycast" type="RayCast2D" parent="."]
+position = Vector2(-13, 16)
 target_position = Vector2(0, 36)

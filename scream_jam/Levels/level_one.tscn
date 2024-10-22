@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk8e5ek1as7od"]
 
 [ext_resource type="PackedScene" uid="uid://0bt4bp4rwcvs" path="res://Characters/player_character.tscn" id="2_ub8q6"]
+[ext_resource type="PackedScene" uid="uid://b02v885w0la0a" path="res://Enemies/gremlin_two.tscn" id="3_d2rlo"]
 [ext_resource type="Texture2D" uid="uid://bl6djnot30wwc" path="res://Art/Trees/Zombie-Tileset---_0134_Capa-135.png" id="3_eckmc"]
-[ext_resource type="PackedScene" uid="uid://citd878oskpbh" path="res://Enemies/gremlin_three.tscn" id="4_sif07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gyqwk"]
 resource_name = "bush"
@@ -29,5 +29,5 @@ layer_0/tile_data = PackedInt32Array(262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 2
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ub8q6")]
 position = Vector2(607, 98)
 
-[node name="GremlinThree" parent="." instance=ExtResource("4_sif07")]
-position = Vector2(128, 136)
+[node name="GremlinTwo" parent="." instance=ExtResource("3_d2rlo")]
+position = Vector2(128, 488)
