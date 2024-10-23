@@ -42,8 +42,18 @@ func keep_on_keeping_on() -> bool:
 	return randi_range(1, 10) % 2 == 0
 
 
+
+func print_collisions() -> void:
+	print("Right Raycast Colliding ", $RightRaycast.is_colliding())
+	print("Left Raycast Colliding ", $LeftRaycast.is_colliding())
+	print("Upper Raycast Colliding ", $UpperRaycast.is_colliding())
+	print("Down Raycast Colliding ", $DownRaycast.is_colliding())
+	
 func _on_right_area_body_exited(body: Node2D) -> void:
-	if !$LeftRaycast.is_colliding():
+	print("Right area exited")
+	if $CompEnemyMove.moving_direction == "left":
+		pass
+	elif !$LeftRaycast.is_colliding():
 		decision = decide_left_or_right()
 		if decision == "right":
 			$CompEnemyMove.move_right()
@@ -56,14 +66,17 @@ func _on_right_area_body_exited(body: Node2D) -> void:
 
 
 func _on_left_area_body_exited(body: Node2D) -> void:
-	if !$RightRaycast.is_colliding():
+	print("Left Area Exited")
+	if $CompEnemyMove.moving_direction == "right":
 		pass
 	elif $RightRaycast.is_colliding():
 		$CompEnemyMove.move_left()
 
 
 func _on_upper_area_body_exited(body: Node2D) -> void:
-	if !$LowerRaycast.is_colliding():
+	if $CompEnemyMove.moving_direction == "down":
+		pass
+	elif !$LowerRaycast.is_colliding():
 		decision = decide_up_or_down()
 		if decision == "up":
 			$CompEnemyMove.move_up()
@@ -76,7 +89,7 @@ func _on_upper_area_body_exited(body: Node2D) -> void:
 
 
 func _on_lower_area_body_exited(body: Node2D) -> void:
-	if !$UpperRaycast.is_colliding():
+	if $CompEnemyMove.moving_direction == "up":
 		pass
 	elif $UpperRaycast.is_colliding():
 		$CompEnemyMove.move_down()
