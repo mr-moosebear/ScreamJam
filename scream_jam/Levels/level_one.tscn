@@ -31,3 +31,12 @@ position = Vector2(607, 98)
 
 [node name="GremlinTwo" parent="." instance=ExtResource("3_d2rlo")]
 position = Vector2(128, 488)
+
+[node name="GremlinTwo2" parent="." instance=ExtResource("3_d2rlo")]
+position = Vector2(752, 232)
+
+[node name="GremlinTwo3" parent="." instance=ExtResource("3_d2rlo")]
+position = Vector2(928, 480)
+
+[node name="GremlinTwo4" parent="." instance=ExtResource("3_d2rlo")]
+position = Vector2(544, 320)
